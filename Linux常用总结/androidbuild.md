@@ -28,9 +28,10 @@ export PATH=/opt/src/node-v8.11.1-linux-x64/bin:/opt/android-sdk-linux/tools:/op
 * Jenkins环境变量配置
 
 
-* Jenkins提示构建失败
+* Jenkins提示构建失败  
+
 ```bash
-* What went wrong:
+What went wrong:
 Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
 查看message，被系统oom，gradle打包过程中需要大概4G以上的内存，升级服务器后构建成功
 ```
