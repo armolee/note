@@ -1,2 +1,2 @@
-The Note of Armo And Message
+The Note of Armo and Message
 
