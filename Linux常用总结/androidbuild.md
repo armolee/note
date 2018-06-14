@@ -19,7 +19,7 @@ tools/android update sdk --no-ui
 tools/android list sdk --all   #查看所有版本，查找缺少的license的版本编号
 tools/android update sdk -u -a -t 4  #更新对应版本，4位对应版本编号
 ```  
-* sdk环境变量  
+* sdk环境变量   
 ```bash
 export ANDROID_HOME=/opt/android-sdk-linux
 export PATH=/opt/src/node-v8.11.1-linux-x64/bin:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platforms:$PATH
