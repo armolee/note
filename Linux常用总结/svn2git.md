@@ -33,16 +33,16 @@
 ```  
 * 遇到的报错  
 ```bash
-Use of uninitialized value $u in substitution (s///) at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
-Use of uninitialized value $u in concatenation (.) or string at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
-#解决方案，修改SVN.pm line 106.
-$u =~ s!^\Q$url\E(/|$)!! or die 
-        "$refname: '$url' not found in '$u'\n"; 
-修改为：
-if(!$u) { 
-        $u = $pathname; 
-}else { 
-        $u =~ s!^\Q$url\E(/|$)!! or die 
-        "$refname: '$url' not found in '$u'\n"; 
-} 
+    Use of uninitialized value $u in substitution (s///) at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
+    Use of uninitialized value $u in concatenation (.) or string at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
+    #解决方案，修改SVN.pm line 106.
+    $u =~ s!^\Q$url\E(/|$)!! or die 
+            "$refname: '$url' not found in '$u'\n"; 
+    修改为：
+    if(!$u) { 
+            $u = $pathname; 
+    }else { 
+            $u =~ s!^\Q$url\E(/|$)!! or die 
+            "$refname: '$url' not found in '$u'\n"; 
+    } 
 ```
