@@ -1,4 +1,5 @@
-* 安装openssl，https://www.openssl.org/source/  
+* 安装openssl，https://www.openssl.org/source/
+ 
 ```bash
   tar xf openssl-1.0.2g.tar.gz  
   #解压时不能使用-z参数，否则会以下产生错误，z：表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解压
@@ -8,7 +9,7 @@
   collect2: ld returned 1 exit status
 
 
-  # 安装，编译时需要启动动态库，--shared，否则curl无法启用ssl
+  #安装，编译时需要启动动态库，--shared，否则curl无法启用ssl
   cd openssl-1.0.2g && .configure --shared && make  && make test && make install
 
   # 创建链接
