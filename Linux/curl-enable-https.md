@@ -1,6 +1,6 @@
-* 安装openssl，https://www.openssl.org/source/
+* 安装openssl，https://www.openssl.org/source/  
 ```bash
-  tarxf openssl-1.0.2g.tar.gz  
+  tar xf openssl-1.0.2g.tar.gz  
   #解压时不能使用-z参数，否则会以下产生错误，z：表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解压
   /usr/bin/ld: libcrypto.a(rsaz_exp.o): relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
   libcrypto.a(rsaz_exp.o): could not read symbols: Bad value
@@ -17,7 +17,7 @@
   ln -s /usr/local/ssl/include/openssl /usr/include/openssl
   echo  "/usr/local/ssl/lib" >>  /etc/ld.so.conf
   ldconfig
-```
+```  
 
 * 安装curl  
 ```bash
