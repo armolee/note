@@ -6,4 +6,5 @@
     * [centos平台Jenkins完成Android持续集成](Linux/androidbuild.md)
     * [kafka broker迁移](Linux/kafka.md)
     * [socket文件调用说](Linux/socket.md)
+    * [curl支持https](Linux/curl-enable-https.md)
 * [Python相关](Python相关/README.md)
