@@ -1,8 +1,10 @@
 # Summary
 
 * [Armo's blog](README.md)
-* [Linux常用总结](Linux常用总结/README.md)
-    * [svn转git总结](Linux常用总结/svn2git.md)
-    * [centos平台Jenkins完成Android持续集成](Linux常用总结/androidbuild.md)
+* [Linux](Linux/README.md)
+    * [svn转git总结](Linux/svn2git.md)
+    * [centos平台Jenkins完成Android持续集成](Linux/androidbuild.md)
+    * [kafka broker迁移](Linux/kafka.md)
+    * [socket文件调用说](Linux/socket.md)
+    * [curl支持https](Linux/curl-enable-https.md)
 * [Python相关](Python相关/README.md)
-
