@@ -8,5 +8,5 @@
     * [socket文件调用说](Linux/socket.md)
     * [curl支持https](Linux/curl-enable-https.md)
     * [crontab](Linux/crontab.md)
-* [Python相关](Python相关/README.md)
-    * [django跨域](Python相关/django-cors.md)
+* [Python相关](Python/README.md)
+    * [django跨域](Python/django-cors.md)
