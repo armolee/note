@@ -36,13 +36,20 @@
     Use of uninitialized value $u in substitution (s///) at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
     Use of uninitialized value $u in concatenation (.) or string at /usr/share/perl5/vendor_perl/Git/SVN.pm line 106.
     #解决方案，修改SVN.pm line 106.
-    $u =~ s!^\Q$url\E(/|$)!! or die 
-            "$refname: '$url' not found in '$u'\n"; 
+    $u =~ s!^\Q$url\E(/|$)!! or die
+            "$refname: '$url' not found in '$u'\n";
     修改为：
-    if(!$u) { 
-            $u = $pathname; 
-    }else { 
-            $u =~ s!^\Q$url\E(/|$)!! or die 
-            "$refname: '$url' not found in '$u'\n"; 
-    } 
+    if(!$u) {
+            $u = $pathname;
+    }else {
+            $u =~ s!^\Q$url\E(/|$)!! or die
+            "$refname: '$url' not found in '$u'\n";
+    }
+
+    #第二个报错，产生原因为在trunk第一次创建时，trunk是一个链接文件，而不是一个不同文件夹，此时工具无法从r1开始工作，手动将r4指向HEAD后，working
+    fatal: Not a valid object name
+    ls-tree -z ./: command returned error: 128
+    Passing the "-r4:HEAD" parameter to "git svn clone" should work. It
+    looks like the repository was initially miscreated and "trunk" was a
+    symlink (and not a directory) in r1.
 ```
