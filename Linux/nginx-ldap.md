@@ -5,7 +5,7 @@
   仓库地址：git clone https://github.com/kvspb/nginx-auth-ldap.git
   nginx -V   #查看nginx版本和目前编译的参数
 
-  [admin_soyoung@al-bj2c-dev.web-allsite-01 bin]$ nginx -V
+  [armo@armo ]$ nginx -V
   nginx version: nginx/1.10.3
   built by gcc 4.4.7 20120313 (Red Hat 4.4.7-18) (GCC)
   built with OpenSSL 1.0.1e-fips 11 Feb 2013
@@ -21,7 +21,7 @@
 
       url ldap://ldap.ip:389/dc=xxxxx,dc=com?uid?sub?(&(objectClass=inetOrgPerson));
       # uid使用该属性为用户名，objectClass配置为uid对应的Class(inetOrgPerson)
-      binddn "cn=username,dc=soyoung,dc=com";
+      binddn "cn=username,dc=armo,dc=com";
       # ldap管理员用户账号，建议使用只读账号
       binddn_passwd "password";
       # 管理员账号密码
