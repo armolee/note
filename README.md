@@ -1,3 +1,3 @@
 ### The Note of Armo and Message
 
--	test
+![armo]http://www.8i88.cn/static/armo.jpg
