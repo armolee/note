@@ -6,7 +6,7 @@ redis cluster去中心化，也就是说集群中每个节点都是平等的关�
 redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默认分配了16384个slot，当client进行set key时，会调用CRC16算法对key取模（CRC16(key)%16384），然后将对应的key存储分配至对应的节点。以三个节点为例，A节点的slot范围为0-5460，B节点的slot范围为5461-10922，C节点的slot范围为10923-16384。假设CRC16(key)%16384=6666，该槽位在B节点中，那边集群会将该key分配至B节点进行存储，查询时也相同。  
 在codis cluster的架构中，将slot分为1024份，CRC32的取模算法，引入了Group的概念，每个Group包括了一个master和至少一个slave，当master有问题时，可通过Dashboard切换到slave中。Codis也采用了预先分片机制，分成了1024个Slot，将这些路由信息保存在Zookeeper中。同时codis也支持了数据热迁移。  
 
-	![三种集群方案对比](static/threeredis.png)
+	![三种集群方案对比](/static/threeredis.png)
 
 2、架构
 	* Codis-Proxy:cluster服务入口，供Client连接
@@ -18,7 +18,7 @@ redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默�
 		* Zookeeper集群:192.168.52.129、192.168.52.130、192.168.52.131
 		* Codis-Proxy:192.168.52.129、192.168.52.130
 		* Codis-Server:192.168.52.129、192.168.52.130、192.168.52.131
-	![codis-cluster逻辑结构](static/codis-cluster.png)
+	![codis-cluster逻辑结构](/static/codis-cluster.png)
 
 3、部署过程
 	1、安装zookeeper cluster。
@@ -76,7 +76,7 @@ redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默�
 	Mode: follower
 	[root@localhost ~]#
 	```
-![zookeeper集群状态](static/zookeeprestatus.png) 
+![zookeeper集群状态](/static/zookeeprestatus.png) 
 
 2、安装Go环境，Codis由Go语言编写，EPEL源中可直接yum安装
 ```bash
@@ -125,7 +125,7 @@ redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默�
 	#登录监听的9090端口查看FE管理界面，接下来集群操作可在FE中完成
 ```
 
-	![FE管理界面](static/codisfe.png)
+	![FE管理界面](/static/codisfe.png)
 ```bash	  
 	#启动两个codis-proxy,分别修改node1和node3的proxy.toml配置文件
 	[root@localhost codis]# vi config/proxy.toml
@@ -137,7 +137,7 @@ redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默�
 	#因为node1上同时存在proxy和dashboard，启动proxy后，proxy会自动连接127.0.0.1的dashboard，node3的proxy需要在FE中添加到dashboard。使用admin_addr配置参数连接。启动proxy后，尽快执行new proxy操作，默认30秒超时，超时后退出proxy进程。
 ```
 
-	！[新增Codis-Proxy](static/newcodisproxy.png)
+	！[新增Codis-Proxy](/static/newcodisproxy.png)
 ```bash
 	#分别启动三台codis-server，并在FE中添加进组，此处不添加master和slave，每天服务器仅启动一个进程，如果需要启动m/s，使用slaveof配置即可。
 	#codis-server配置文件默认监听在127.0.0.1地址上，修改该地址后再启动实例
@@ -147,13 +147,13 @@ redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默�
 	#三台启动完成后再FE中先添加三个组，在将每个实例添加到组中，然后进行slot初始化。完成集群搭建。
 ```
 
-	![新增Group和组成员](static/newcodisgroup.png)
+	![新增Group和组成员](/static/newcodisgroup.png)
 #初始化Slot，会在FE中看到slot迁移的整个过程
 
 
 
 
-	![初始化Slot](static/initcodisslot.png)
+	![初始化Slot](/static/initcodisslot.png)
 
 #### 参考文档
 ```
