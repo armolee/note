@@ -9,5 +9,8 @@
     * [curl支持https](Linux/curl-enable-https.md)
     * [crontab](Linux/crontab.md)
     * [nginx支持ldap认证](Linux/nginx-ldap.md)
+    * [codis](Linux/codis.md)
+    * [vsftp](Linux/vsftp.md)
 * [Python相关](Python/README.md)
     * [django跨域](Python/django-cors.md)
+    * [微信报警](Python/zabbix-wechat.md)
