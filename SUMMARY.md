@@ -11,6 +11,7 @@
     * [nginx支持ldap认证](Linux/nginx-ldap.md)
     * [codis](Linux/codis.md)
     * [vsftp](Linux/vsftp.md)
+    * [supervisor](Linux/supervisor.md)
 * [Python相关](Python/README.md)
     * [django跨域](Python/django-cors.md)
     * [微信报警](Python/zabbix-wechat.md)

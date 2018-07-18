@@ -1,10 +1,10 @@
 ## codis
 
 #### 简介  
-	redis是目前使用广泛的中间件，从3.0版本开始官方支持了redis cluster。理解codis cluster首先需要理解官方的redis cluster。  
-	redis cluster去中心化，也就是说集群中每个节点都是平等的关系，每个节点都保存各自的数据和整个集群的状态，换句话来说集群中每个节点内存储的数据内容均不相同。  
-	redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默认分配了16384个slot，当client进行set key时，会调用CRC16算法对key取模（CRC16(key)%16384），然后将对应的key存储分配至对应的节点。以三个节点为例，A节点的slot范围为0-5460，B节点的slot范围为5461-10922，C节点的slot范围为10923-16384。假设CRC16(key)%16384=6666，该槽位在B节点中，那边集群会将该key分配至B节点进行存储，查询时也相同。  
-	在codis cluster的架构中，将slot分为1024份，CRC32的取模算法，引入了Group的概念，每个Group包括了一个master和至少一个slave，当master有问题时，可通过Dashboard切换到slave中。Codis也采用了预先分片机制，分成了1024个Slot，将这些路由信息保存在Zookeeper中。同时codis也支持了数据热迁移。  
+redis是目前使用广泛的中间件，从3.0版本开始官方支持了redis cluster。理解codis cluster首先需要理解官方的redis cluster。  
+redis cluster去中心化，也就是说集群中每个节点都是平等的关系，每个节点都保存各自的数据和整个集群的状态，换句话来说集群中每个节点内存储的数据内容均不相同。  
+redis cluster采用哈希槽（hash slot）的方式来分配数据，集群默认分配了16384个slot，当client进行set key时，会调用CRC16算法对key取模（CRC16(key)%16384），然后将对应的key存储分配至对应的节点。以三个节点为例，A节点的slot范围为0-5460，B节点的slot范围为5461-10922，C节点的slot范围为10923-16384。假设CRC16(key)%16384=6666，该槽位在B节点中，那边集群会将该key分配至B节点进行存储，查询时也相同。  
+在codis cluster的架构中，将slot分为1024份，CRC32的取模算法，引入了Group的概念，每个Group包括了一个master和至少一个slave，当master有问题时，可通过Dashboard切换到slave中。Codis也采用了预先分片机制，分成了1024个Slot，将这些路由信息保存在Zookeeper中。同时codis也支持了数据热迁移。  
 
 ![三种集群方案对比](/static/threeredis.png)  
 
