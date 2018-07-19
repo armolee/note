@@ -1,3 +1,5 @@
+## django跨域问题cors
+
 ```python
   pip install django-cors-headers
 

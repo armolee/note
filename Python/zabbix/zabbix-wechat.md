@@ -1,4 +1,4 @@
-#### zabbix 微信报警
+## zabbix 微信报警
 
 1. 基于python3、Zabbix 3.2.4
 2. 默认使用卡片类型消息发送
@@ -11,16 +11,16 @@
 
 
 ```bash
-[root@localhost zabbix]# more wechat.conf 
+[root@localhost zabbix]# more wechat.conf
 [wechat]
-Corpid = xxxxxxxx 
+Corpid = xxxxxxxx
 Secret = xxxxxxxx
 Agentid = 1000001
 Zabbix_url = http://localhost/zabbix
 ```
 
 ```python
-[root@localhost zabbix]# more sendmessage.py 
+[root@localhost zabbix]# more sendmessage.py
 #!/usr/bin/python
 #_*_coding:utf-8 _*_
 import requests,sys,json,os
@@ -87,5 +87,5 @@ if __name__ == '__main__':
     Zabbix_url = cf.get("wechat","Zabbix_url")
     Token = GetToken(Corpid, Secret)
     SendCardMessage(Token,User,Agentid,Subject,Content,Zabbix_url)
-[root@localhost zabbix]# 
+[root@localhost zabbix]#
 ```
