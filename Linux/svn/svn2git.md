@@ -4,6 +4,8 @@
 ```  
 * 获取SVN历史提交用户信息，创建SVN用户与GIT用户关系映射文件(提交过的用户都需要获取，否则任务会被中断 )  
 ```bash    
+    #获取历史提交的作者信息
+    svn log ^/ --xml | grep -P "^<author" | sort -u | perl -pe 's/<author>(.*?)<\/author>/$1 = /'
     svnuser = gituser <mail>  
     svnuser1 = gituser1 <mail>  
 ```  
