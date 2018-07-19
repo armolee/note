@@ -8,7 +8,9 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 * openvpn
 *	easy-rsa
 *	Linux转发功能
+
 #### 部署详细
+
 ```bash
 	#打开Linux数据包转发功能
 	[root@node1 ~]# more /etc/sysctl.conf

@@ -1,4 +1,4 @@
-### vsftp
+## vsftp
 
 #### 认证模式
 
@@ -17,7 +17,7 @@
     [root@armo ~]# more /etc/passwd | grep ftp  
     ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin  
 ```
- 
+
 #####  匿名用户  
 
 ```
@@ -28,9 +28,9 @@
     anon_other_write_ enable=YES  匿名用户删除等权限  
 ```
 
-##### 系统用户 
- 
-``` 
+##### 系统用户
+
+```
     系统用户通过ftp访问的资源的位置：用户自己的家目录
     local_enable=YES  启用系统用户认证  
     write_enable=YES  系统用户写权限  
@@ -49,7 +49,7 @@
 
 ##### 虚拟用户(mysql)
 
-``` 
+```
     虚拟用户通过ftp访问的资源的位置：给虚拟用户指定的映射成为的系统用户的家目录
     建立虚拟用户映射的系统用户及对应的目录，并且让其他用户对该目录有操作权限
     useradd -s /sbin/nologin -d /var/ftproot vuser
@@ -73,7 +73,7 @@
 ```
 
 ##### 基础配置
-    
+
 ```    
     日志：
         xferlog_enable=YES

@@ -1,3 +1,5 @@
+## android的持续集成
+
  * gradle安装
 ```bash
  curl -s "https://get.sdkman.io" | bash 安装sdk包管理工具
@@ -8,7 +10,7 @@ sdk install gradle 3.1  #安装指定的gradle版本
 ```bash
 org.gradle.jvmargs=-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=1080  
 ```  
-* 下载sdk，http://sdk.android-studio.org/  http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz 
+* 下载sdk，http://sdk.android-studio.org/  http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 * sdk不能放到/root下，否则会提示SDK不存在，因为/root下禁止其他用户访问，并且jenkins需要对该目录有可写可执行权限  
 * 更新sdk，
 ```bash
@@ -35,4 +37,3 @@ What went wrong:
 Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
 查看message，被系统oom，gradle打包过程中需要大概4G以上的内存，升级服务器后构建成功
 ```
-

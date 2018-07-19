@@ -1,6 +1,6 @@
-### 使用ldap将内部所有平台接入统一认证
+## 使用ldap将内部所有平台接入统一认证
 
-### nginx需要使用第三方ldap模块可以接入ldap的认证
+#### nginx需要使用第三方ldap模块可以接入ldap的认证
 ```bash  
   仓库地址：git clone https://github.com/kvspb/nginx-auth-ldap.git
   nginx -V   #查看nginx版本和目前编译的参数
