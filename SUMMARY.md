@@ -2,35 +2,34 @@
 
 * [Armo's blog](README.md)
 * [Linux](Linux/summary.md)
-    * [svn]
+    * [svn](Linux/svn/svn2git.md)
       * [svn转git总结](Linux/svn/svn2git.md)
-    * [Jenkins]
+    * [Jenkins](Linux/jenkins/androidbuild.md)
       * [Android持续集成](Linux/jenkins/androidbuild.md)
-    * [kafka]
+    * [kafka](Linux/kafka/kafka.md)
       * [kafka broker迁移](Linux/kafka/kafka.md)
-    * [os]
+    * [os](Linux/os/socket.md)
       * [socket文件调用说明](Linux/os/socket.md)
       * [curl支持https](Linux/os/curl-enable-https.md)
       * [yum升级centos内核](Linux/os/Yum升级CentOs内核版本.md)
-    * [crontab]
+    * [crontab](Linux/crontab/crontab.md)
       * [crontab](Linux/crontab/crontab.md)
-    * [nginx]
+    * [nginx](Linux/nginx/nginx-ldap.md)
       * [支持ldap认证](Linux/nginx/nginx-ldap.md)
-    * [codis]
+    * [codis](Linux/codis/codis.md)
       * [codis](Linux/codis/codis.md)
-    * [vsftp]
+    * [vsftp](Linux/vsftp/vsftp.md)
       * [vsftp](Linux/vsftp/vsftp.md)
-    * [supervisor]  
+    * [supervisor](Linux/supervisor/supervisor.md)
       * [supervisor](Linux/supervisor/supervisor.md)
-    * [expect]
+    * [expect](Linux/expect/ecpect-scp&ssh.md)
       * [expect](Linux/expect/ecpect-scp&ssh.md)
-    * [openvpn]
+    * [openvpn](Linux/openvpn/openvpn.md)
       * [openvpn](Linux/openvpn/openvpn.md)
-
-* [Python]
-  * [django]
+* [Python](Python/README.md)
+  * [django](Python/django/django-cors.md)
     * [django跨域](Python/django/django-cors.md)
-  * [zabbix]
+  * [zabbix](Python/zabbix/zabbix-wechat.md)
     * [微信报警](Python/zabbix/zabbix-wechat.md)
     * [Selenium抓取zabbix性能图](Python/zabbix/Selenium抓取zabbix性能图.md)
     * [图文报警](Python/zabbix/企业微信接入Zabbix图文报警.md)
