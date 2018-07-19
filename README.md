@@ -1,3 +1,3 @@
 ### The Note of Armo and Message
 
-![armo](/static/armo.jpg)
+![armo](http://www.8i88.cn/static/armo.jpg)
