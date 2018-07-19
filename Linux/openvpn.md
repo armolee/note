@@ -1,16 +1,17 @@
 ## OpenVpn
 
-####1、简介
-	
+#### 简介
+
 VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都能愉快的连接公司内网的各个服务器。公司研发GG都需要这个，万一哪天出什么问题了在啥都不会就不好了，要未雨绸缪啊。
-	此处只介绍openvpn的部署，关于虚拟子网路由和NAT规则有网络基础很容易想明白。（无非就是将虚拟子网的网段nat成openvpn服务器的一个物理接口或者是虚拟接口而已）
-####2、需要的组件
-	openvpn
-	easy-rsa
-	Linux转发功能
-####3、部署详细
+此处只介绍openvpn的部署，关于虚拟子网路由和NAT规则有网络基础很容易想明白。（无非就是将虚拟子网的网段nat成openvpn服务器的一个物理接口或者是虚拟接口而已）
+#### 需要的组件
+* openvpn
+*	easy-rsa
+*	Linux转发功能
+#### 部署详细
+```bash
 	#打开Linux数据包转发功能
-	[root@node1 ~]# more /etc/sysctl.conf 
+	[root@node1 ~]# more /etc/sysctl.conf
 	# Controls IP packet forwarding
 	net.ipv4.ip_forward = 1
 	[root@node1 ~]# sysctl -p
@@ -19,7 +20,7 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 	#制作CA，服务端证书和客户端证书
 	[root@node1 ~]# cd /usr/share/easy-rsa/2.0/
 	#修改默认参数值，CA和证书都可使用该默认参数进行制作
-	[root@node1 2.0]# vi vars 
+	[root@node1 2.0]# vi vars
 	export KEY_COUNTRY="CN"
 	export KEY_PROVINCE="BJ"
 	export KEY_CITY="BJ"
@@ -29,7 +30,7 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 	[root@node1 2.0]# source vars 	#参数生效
 	NOTE: If you run ./clean-all, I will be doing a rm -rf on /usr/share/easy-rsa/2.0/keys
 	[root@node1 2.0]# ./clean-all 	#清楚之前所有记录
-	[root@node1 2.0]# 
+	[root@node1 2.0]#
 	[root@node1 2.0]# ls keys/
 	index.txt  serial
 	#制作CA
@@ -45,7 +46,7 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 	1 out of 1 certificate requests certified, commit? [y/n]y
 	Write out database with 1 new entries
 	Data Base Updated
-	[root@node1 2.0]# 
+	[root@node1 2.0]#
 	[root@node1 2.0]# ls keys/
 	01.pem  ca.crt  ca.key  index.txt  index.txt.attr  index.txt.old  serial  serial.old  armo_server.crt  armo_server.csr  armo_server.key
 	#使用CA颁发客户端证书
@@ -57,12 +58,12 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 	1 out of 1 certificate requests certified, commit? [y/n]y
 	Write out database with 1 new entries
 	Data Base Updated
-	[root@node1 2.0]# 
+	[root@node1 2.0]#
 	[root@node1 2.0]# ls keys/
 	01.pem  02.pem  ca.crt  ca.key  armo_client.crt  armo_client.csr  armo_client.key  index.txt  index.txt.attr  index.txt.attr.old  index.txt.old  serial  serial.old  armo_server.crt  armo_server.csr  armo_server.key
 	#创建dh，生成2048pm
-	[root@node1 2.0]# ./build-dh 
-	[root@node1 2.0]# ll keys/dh2048.pem 
+	[root@node1 2.0]# ./build-dh
+	[root@node1 2.0]# ll keys/dh2048.pem
 	-rw-r--r-- 1 root root 424 Aug 16 16:49 keys/dh2048.pem
 	#将所有证书移动到openvpn配置目录下
 	[root@node1 2.0]# cp -a keys/ /etc/openvpn/
@@ -118,9 +119,12 @@ VPN虚拟专用网络，可以让研发在家在任何地方登陆VPN之后都�
 	plugin /etc/openvpn/openvpn-auth-pam.so login
 	#client端配置项，删除cert和key的配置，仅保留ca即可，然后新增以下参数
 	auth-user-pass
-	#重启服务后，此时打开客户端登录VPN时则需要输入服务器系统的账号密码进行登录
-	#关于路由和NAT问题根据各个环境不同需要单独进行配置，需要注意的是NAT转换后的IP，以及openvpn服务端口的放通，有需要的话也可以将内网服务器的网关全部指向openvpn服务器
-####最偷懒的登录方式，将客户端的账号密码保存到文件，让程序自动读取后登录
-修改客户端配置文件
-auth-user-pass pass.txt
+```
+
+###### 重启服务后，此时打开客户端登录VPN时则需要输入服务器系统的账号密码进行登录
+###### 关于路由和NAT问题根据各个环境不同需要单独进行配置，需要注意的是NAT转换后的IP，以及openvpn服务端口的放通，有需要的话也可以将内网服务器的网关全部指向openvpn服务器
+###### 最偷懒的登录方式，将客户端的账号密码保存到文件，让程序自动读取后登录
+###### 修改客户端配置文件
+	auth-user-pass pass.txt
+
 在conf目录下创建pass.txt文件，将用户名写到第一行，密码写在第二行，就可以实现自动登录了，再也不用每次都输入账号密码，达到记住用户名密码的效果啦
