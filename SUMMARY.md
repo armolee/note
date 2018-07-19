@@ -1,7 +1,7 @@
 # Summary
 
 * [Armo's blog](README.md)
-* [Linux](Linux/svn2git.md)
+* [Linux](Linux/summary.md)
     * [svn转git总结](Linux/svn2git.md)
     * [centos平台Jenkins完成Android持续集成](Linux/androidbuild.md)
     * [kafka broker迁移](Linux/kafka.md)
