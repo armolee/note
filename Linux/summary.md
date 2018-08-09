@@ -1,2 +1,3 @@
 * rsync同步文件会导致文件的inode变化，inplace会改变rsync的传输方式，默认为创建文件新副本，这样会改变文件的inode值，导致目标文件的硬链接失效，使用inplace会将文件变更写入原文件保持inode不变
 * crontab 不会加载新增的环境变量，需要手动source
+* crontab 不能直接写管道符，管道符后的命令将不被执行
