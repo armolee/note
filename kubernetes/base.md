@@ -7,10 +7,10 @@
       * Scheduler : 调度器，负责创建pod，管理各控制器的健康状态等
       * Controller-Manager : 管理Scheduler的健康状态，该组件使用master节点冗余的方式达到高可用的效果
       * docker : 容器实体，运行k8s addons附件容器，例如etcd，dns等
-      * kubectl : 连接API Server接口，执行各类k8s指令
+      * kubelet : node agent
   * node
     * 运行容器的实际载体，能够安装运行k8s的各类操作系统都可加入至node节点中
-    * kubectl 、 docker
+    * kubelet 、 docker
   * registry
     * 提供各类image镜像，公有或私有
   * pod
