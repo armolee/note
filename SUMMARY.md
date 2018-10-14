@@ -18,7 +18,7 @@
   * [svn](Linux/svn/svn.md)
     * [svn转git总结](Linux/svn/svn2git.md)
   * [vsftp](Linux/vsftp/vsftp.md)
-* [Kubernetes](kubernetes/install.md)  
+* [Kubernetes](kubernetes/base.md)  
 * [Python](Python/README.md)
   * [django](Python/django/django-cors.md)
   * [zabbix](Python/zabbix/zabbix-wechat.md)
