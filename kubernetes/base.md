@@ -24,3 +24,9 @@
     * StatefulSet : 有状态控制器
     * DaemonSet : 每个node仅运行一个副本
     * Job/CronJob : 作业类型pod的控制器
+  * 服务发现
+  ![zidongfaxian](http://www.8i88.cn/static/zidongfaxian.png)
+    1. 养鸡场将自己的信息注册在交易中心，交易中心定期检查
+    2. 想吃鸡的人在不知道去哪里买鸡的情况下，直接查询交易中心，交易中心告知养鸡场的机器位置
+    3. 得到买鸡的途径去买鸡
+    * 服务发现过程与上述过程类似，k8s中以service(微服务)的概念做到交易中心的作用，其借助kube-dns服务来实现具体pod信息的注册及变更，借助iptables或ipvs实现流量的负载(1.11版本的k8s开始将转发规则转移至ipvs以达到更好的转发效果，较早的版本中一直使用iptables来实现)；过程中使用不同的Pod Laber识别不同的service，之后再动态的探测其IP、PORT及hostname信息
