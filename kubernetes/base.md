@@ -10,6 +10,7 @@
       * kubelet : node agent
   * node
     * 运行容器的实际载体，能够安装运行k8s的各类操作系统都可加入至node节点中
+    * kube-proxy:负责与API Server通信，实时根据API Server的通知做node变更，包含iptables、ipvs规则的变更
     * kubelet 、 docker
   * registry
     * 提供各类image镜像，公有或私有
